@@ -1,0 +1,6 @@
+<div class="board">
+  <div *ngFor="let status of taskState | enumToArray">
+    <h1>{{ status }}</h1>
+    <app-task-list [tasks]="getTaskListByStatus(status)"></app-task-list>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div [ngStyle]="{ display: getDisplay() }" class="modal">
+  <div class="modal_title-container">
+    <div class="modal_title">{{ task.name }}</div>
+    <div class="modal_close-button" (click)="modalClose()">
+      <svg-x-button></svg-x-button>
+    </div>
+  </div>
+  <div class="modal_body">
+    {{ task.description }}
+
+    <form
+      class="modal_add-comment"
+      [formGroup]="commentForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <label for="addComment">Add comment</label>
+      <textarea
+        id="addComment"
+        rows="4"
+        class="modal_add-comment_text"
+        formControlName="content"
+      ></textarea>
+      <button class="modal_add-comment_save-button">Save</button>
+    </form>
+    <div class="modal_comment-list">
+      <div *ngFor="let comment of task.comments">
+        <div>{{ comment.content }}</div>
+        <div>{{ comment.date | date: "dd.MM.YY HH:mm:ss" }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="background" [ngStyle]="{ display: getDisplay() }"></div>

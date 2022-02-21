@@ -10,7 +10,13 @@ export class TaskComponent implements OnInit {
   @Input()
   task: Task;
 
+  modalOpen: boolean = false;
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  openModal() {
+    this.modalOpen = true;
+  }
 }

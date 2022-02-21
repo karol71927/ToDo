@@ -7,6 +7,10 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TaskComponent } from './task/task.component';
 import { TaskBoardComponent } from './task-board/task-board.component';
 import { EnumToArrayPipe } from './enum-to-array.pipe';
+import { ModalComponent } from './modal/modal.component';
+import { ClickOutsideDirective } from './click-outside.directive';
+import { XButtonComponent } from './svg/x-button.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,13 +18,13 @@ import { EnumToArrayPipe } from './enum-to-array.pipe';
     TaskListComponent,
     TaskComponent,
     TaskBoardComponent,
-    EnumToArrayPipe
+    EnumToArrayPipe,
+    ModalComponent,
+    ClickOutsideDirective,
+    XButtonComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

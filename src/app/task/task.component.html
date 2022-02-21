@@ -1,5 +1,7 @@
-<div class="task">
+<div class="task" (click)="openModal()">
   <h1>{{ task.name }}</h1>
   <p>{{ task.description }}</p>
   <p>{{ task.status }}</p>
 </div>
+
+<app-modal [(isVisible)]="modalOpen" [task]="task"> </app-modal>

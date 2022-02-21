@@ -4,8 +4,14 @@ export enum TaskStatus {
   DONE = 'Done',
 }
 
+export interface Comment {
+  content: string;
+  date: Date;
+}
+
 export interface Task {
   name: string;
   description: string;
   status: TaskStatus;
+  comments?: Comment[];
 }

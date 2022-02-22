@@ -1,8 +1,21 @@
+@use "../../colors.scss";
+@use "../../size.scss";
+
 .board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  column-gap: 10px;
-}
+  column-gap: size.$gap-m;
 
-.board-column {
+  &_column {
+    background-color: colors.$background-dark-3;
+    border-radius: size.$border-radius-xl;
+
+    &_header {
+      background-color: colors.$background-dark-4;
+      font-size: 2rem;
+      color: colors.$text-light-1;
+      padding: 1rem;
+      border-radius: size.$border-radius-xl size.$border-radius-xl 0 0;
+    }
+  }
 }

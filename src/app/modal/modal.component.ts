@@ -42,6 +42,9 @@ export class ModalComponent implements OnInit {
   }
 
   onSubmit(): void {
+    if (!this.task.comments) {
+      this.task.comments = [];
+    }
     this.task.comments?.unshift({
       content: this.commentForm.value.content,
       date: new Date(Date.now()),

@@ -11,3 +11,23 @@ h1 {
 p {
   color: colors.$text-light-2;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: colors.$scrollbar-background;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: colors.$scrollbar-default;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: colors.$scrollbar-hovered;
+}

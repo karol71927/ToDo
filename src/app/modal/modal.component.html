@@ -1,4 +1,4 @@
-<div [ngStyle]="{ display: getDisplay() }" class="modal">
+<div [ngStyle]="{ display: getDisplay() }" class="modal" *ngIf="task">
   <div class="modal_title-container">
     <div class="modal_title">{{ task.name }}</div>
     <div class="modal_close-button" (click)="modalClose()">

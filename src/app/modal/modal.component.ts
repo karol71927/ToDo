@@ -27,7 +27,13 @@ export class ModalComponent implements OnInit {
   }
 
   sortCommentsByDateAscending() {
-    this.task.comments?.sort((a, b) => b.date.valueOf() - a.date.valueOf());
+    if (
+      this.task &&
+      this.task.comments !== undefined &&
+      this.task.comments !== null
+    ) {
+      this.task.comments.sort((a, b) => b.date.valueOf() - a.date.valueOf());
+    }
   }
 
   getDisplay(): string {

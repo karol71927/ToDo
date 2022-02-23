@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { taskList } from 'src/DATA/TASKS';
 import { Task, TaskStatus } from 'src/models/task';
+import { EnumToArrayPipe } from '../enum-to-array.pipe';
 
 @Component({
   selector: 'app-task-board',

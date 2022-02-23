@@ -1,4 +1,4 @@
-<div class="task" (click)="openModal()">
+<div class="task" *ngIf="task" (click)="openModal()">
   <h1>{{ task.name }}</h1>
   <p>{{ task.description }}</p>
   <p>{{ task.status }}</p>

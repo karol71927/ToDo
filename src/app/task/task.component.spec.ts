@@ -21,4 +21,13 @@ describe('TaskComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('should change modal open/close state', () => {
+    const component = new TaskComponent();
+    it('should open modal', () => {
+      component.modalOpen = false;
+      component.openModal();
+      expect(component.modalOpen).toBe(true);
+    });
+  });
 });

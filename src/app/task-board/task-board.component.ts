@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { taskList } from 'src/DATA/TASKS';
+import { Component, Input, OnInit } from '@angular/core';
 import { Task, TaskStatus } from 'src/models/task';
-import { EnumToArrayPipe } from '../enum-to-array.pipe';
 
 @Component({
   selector: 'app-task-board',
@@ -9,6 +7,9 @@ import { EnumToArrayPipe } from '../enum-to-array.pipe';
   styleUrls: ['./task-board.component.scss'],
 })
 export class TaskBoardComponent implements OnInit {
+  @Input()
+  taskList: Task[];
+
   taskState = TaskStatus;
 
   constructor() {}
@@ -16,7 +17,7 @@ export class TaskBoardComponent implements OnInit {
   ngOnInit(): void {}
 
   getTaskListByStatus(status: string): Task[] {
-    return taskList.filter((task) => {
+    return this.taskList.filter((task) => {
       return task.status === status;
     });
   }

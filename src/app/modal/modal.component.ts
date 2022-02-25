@@ -31,7 +31,7 @@ export class ModalComponent implements OnInit, OnChanges {
 
   selectedStatus: number;
 
-  status: { id: number; name: string; status: TaskStatus }[];
+  status: { id: number; name: string; status: TaskStatus }[] = [];
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -50,7 +50,6 @@ export class ModalComponent implements OnInit, OnChanges {
   }
 
   fillStatus() {
-    this.status = [];
     Object.entries(TaskStatus).forEach((x, index) =>
       this.status.push({ id: index, name: x[0], status: x[1] })
     );

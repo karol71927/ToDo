@@ -8,8 +8,7 @@ import { TaskService } from '../task.service';
   styleUrls: ['./task-board.component.scss'],
 })
 export class TaskBoardComponent implements OnInit {
-  @Input()
-  taskList: Task[];
+  taskList: Task[] = [];
 
   taskStatus = TaskStatus;
 
@@ -21,7 +20,6 @@ export class TaskBoardComponent implements OnInit {
 
   getTasks() {
     this.taskService.getTasks().subscribe((data: Task[]) => {
-      console.log(data);
       this.taskList = data;
     });
   }

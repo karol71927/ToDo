@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Task, TaskStatus } from 'src/models/task';
 import { EnumToArrayPipe } from '../enum-to-array.pipe';
@@ -6,16 +7,19 @@ import { TaskBoardComponent } from './task-board.component';
 
 const tasks: Task[] = [
   {
+    id: 1,
     name: 'task to do',
     description: 'desc',
     status: TaskStatus.TODO,
   },
   {
+    id: 2,
     name: 'task in progress',
     description: 'desc',
     status: TaskStatus.INPROGRESS,
   },
   {
+    id: 3,
     name: 'task done',
     description: 'desc',
     status: TaskStatus.DONE,
@@ -29,12 +33,14 @@ describe('TaskBoardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [TaskBoardComponent, EnumToArrayPipe],
+      imports: [HttpClientTestingModule],
     }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TaskBoardComponent);
     component = fixture.componentInstance;
+    component.taskList = tasks;
     fixture.detectChanges();
   });
 
@@ -43,12 +49,11 @@ describe('TaskBoardComponent', () => {
   });
 
   describe('should filter task by status', () => {
-    const component = new TaskBoardComponent();
-    component.taskList = tasks;
     it('should get tasks to do', () => {
       const list = component.getTaskListByStatus(TaskStatus.TODO);
       expect(list).toEqual([
         {
+          id: 1,
           name: 'task to do',
           description: 'desc',
           status: TaskStatus.TODO,
@@ -59,6 +64,7 @@ describe('TaskBoardComponent', () => {
       const list = component.getTaskListByStatus(TaskStatus.INPROGRESS);
       expect(list).toEqual([
         {
+          id: 2,
           name: 'task in progress',
           description: 'desc',
           status: TaskStatus.INPROGRESS,
@@ -69,6 +75,7 @@ describe('TaskBoardComponent', () => {
       const list = component.getTaskListByStatus(TaskStatus.DONE);
       expect(list).toEqual([
         {
+          id: 3,
           name: 'task done',
           description: 'desc',
           status: TaskStatus.DONE,

@@ -6,6 +6,19 @@
     </div>
   </div>
   <div class="modal_body">
+    <div class="modal_select_container">
+      <div class="modal_select">
+        <ng-select
+          [items]="status"
+          bindLabel="name"
+          bindValue="id"
+          [(ngModel)]="selectedStatus"
+          class="custom"
+          [clearable]="false"
+        ></ng-select>
+      </div>
+      Selected {{ selectedStatus }}
+    </div>
     <div class="modal_description">
       Description:<br />
       {{ task.description }}
@@ -13,7 +26,7 @@
     <form
       class="modal_add-comment"
       [formGroup]="commentForm"
-      (ngSubmit)="onSubmit()"
+      (ngSubmit)="onSubmitComment()"
     >
       <textarea
         rows="4"

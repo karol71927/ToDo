@@ -11,6 +11,9 @@ import { ModalComponent } from './modal/modal.component';
 import { ClickOutsideDirective } from './click-outside.directive';
 import { XButtonComponent } from './svg/x-button.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { fakeBackendProvider } from 'src/fake-backend/fakeBackend';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,8 +26,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ClickOutsideDirective,
     XButtonComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgSelectModule,
+    HttpClientModule,
+  ],
+  providers: [fakeBackendProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

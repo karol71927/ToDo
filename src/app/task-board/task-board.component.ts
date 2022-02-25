@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Task, TaskStatus } from 'src/models/task';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-task-board',
@@ -10,11 +11,20 @@ export class TaskBoardComponent implements OnInit {
   @Input()
   taskList: Task[];
 
-  taskState = TaskStatus;
+  taskStatus = TaskStatus;
 
-  constructor() {}
+  constructor(private taskService: TaskService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getTasks();
+  }
+
+  getTasks() {
+    this.taskService.getTasks().subscribe((data: Task[]) => {
+      console.log(data);
+      this.taskList = data;
+    });
+  }
 
   getTaskListByStatus(status: string): Task[] {
     return this.taskList.filter((task) => {

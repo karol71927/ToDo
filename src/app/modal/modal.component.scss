@@ -53,6 +53,16 @@
     color: colors.$text-light-2;
   }
 
+  &_select {
+    align-self: flex-end;
+    width: 150px;
+
+    &_container {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
   &_description {
     font-size: 1.1rem;
   }
@@ -65,7 +75,7 @@
     &_text {
       width: 100%;
       border: none;
-      border-radius: 0.5rem;
+      border-radius: size.$border-radius-s;
       margin: 0.5rem 0;
     }
 
@@ -89,4 +99,8 @@
       color: colors.$text-light-3;
     }
   }
+}
+
+.ng-select.custom {
+  // border-radius: size.$border-radius-s;
 }

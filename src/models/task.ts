@@ -9,10 +9,13 @@ export interface Comment {
   date: Date;
 }
 
-export interface Task {
+export interface TaskBase {
   id: number;
   name: string;
-  description: string;
   status: TaskStatus;
+}
+
+export interface Task extends TaskBase {
+  description: string;
   comments?: Comment[];
 }

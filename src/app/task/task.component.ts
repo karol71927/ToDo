@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Task } from 'src/models/task';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TaskBase } from 'src/models/task';
 
 @Component({
   selector: 'app-task',
@@ -8,7 +8,10 @@ import { Task } from 'src/models/task';
 })
 export class TaskComponent implements OnInit {
   @Input()
-  task: Task;
+  task: TaskBase;
+
+  @Output()
+  statusChanged = new EventEmitter<boolean>();
 
   modalOpen: boolean = false;
 
@@ -18,5 +21,12 @@ export class TaskComponent implements OnInit {
 
   openModal() {
     this.modalOpen = true;
+  }
+
+  onStatusChanged(statusChanged: boolean) {
+    if (!statusChanged) {
+      return;
+    }
+    this.statusChanged.emit(statusChanged);
   }
 }

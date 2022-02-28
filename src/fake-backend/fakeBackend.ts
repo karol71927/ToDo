@@ -18,7 +18,7 @@ import {
 } from 'rxjs';
 
 import { taskList } from '../data/TASKS';
-import { Task } from 'src/models/task';
+import { Task, TaskBase } from 'src/models/task';
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -42,15 +42,23 @@ export class FakeBackendInterceptor implements HttpInterceptor {
           return addTask();
         case url.match(/\/tasks\/\d+$/) && method === 'GET':
           return getTaskById();
-        case url.match(/\/tasks\/\d+$/) && method === 'POST':
-          return addComment();
+        case url.match(/\/tasks\/\d+$/) && method === 'PUT':
+          return updateTask();
         default:
           return next.handle(req);
       }
     }
 
-    function getTasks(): Observable<HttpResponse<Task[]>> {
-      return ok(taskList);
+    function getTasks(): Observable<HttpResponse<TaskBase[]>> {
+      return ok(
+        taskList.map((task) => {
+          return {
+            id: task.id,
+            name: task.name,
+            status: task.status,
+          };
+        })
+      );
     }
 
     function addTask(): Observable<HttpResponse<any>> {
@@ -68,18 +76,19 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       return ok(task);
     }
 
-    function addComment(): Observable<HttpResponse<any>> {
-      const task = taskList.find((x) => {
+    function updateTask(): Observable<HttpResponse<any>> {
+      const taskIndex = taskList.findIndex((x) => {
         return x.id === getIdFromUrl();
       });
-      if (!task) {
+      if (taskIndex === -1) {
         return error(404, 'Task not found');
       }
-      if (!task.comments) {
-        task.comments = [];
-      }
-      task.comments.push(body);
-      return okCreated();
+      taskList.splice(taskIndex, 1, body);
+      // if (!task.comments) {
+      //   task.comments = [];
+      // }
+      // task.comments.push(body);
+      return ok(body);
     }
 
     function ok(body?: any): Observable<HttpResponse<any>> {

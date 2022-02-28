@@ -1,6 +1,9 @@
 <div *ngIf="taskList" class="board">
   <div *ngFor="let status of taskStatus | enumToArray" class="board_column">
     <div class="board_column_header">{{ status }}</div>
-    <app-task-list [tasks]="getTaskListByStatus(status)"></app-task-list>
+    <app-task-list
+      [tasks]="getTaskListByStatus(status)"
+      (statusChanged)="onStatusChanged($event)"
+    ></app-task-list>
   </div>
 </div>

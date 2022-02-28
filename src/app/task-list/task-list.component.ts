@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { taskList } from 'src/data/TASKS';
-import { Task } from 'src/models/task';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TaskBase } from 'src/models/task';
 
 @Component({
   selector: 'app-task-list',
@@ -9,9 +8,16 @@ import { Task } from 'src/models/task';
 })
 export class TaskListComponent implements OnInit {
   @Input()
-  tasks: Task[];
+  tasks: TaskBase[];
+
+  @Output()
+  statusChanged = new EventEmitter<boolean>();
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  onStatusChanged(statusChanged: boolean) {
+    this.statusChanged.emit(statusChanged);
+  }
 }

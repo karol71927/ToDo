@@ -1,3 +1,3 @@
 <div *ngFor="let task of tasks">
-  <app-task [task]="task"></app-task>
+  <app-task [task]="task" (statusChanged)="onStatusChanged($event)"></app-task>
 </div>

@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Task, TaskStatus } from 'src/models/task';
+import { Component, OnInit } from '@angular/core';
+import { TaskBase, TaskStatus } from 'src/models/task';
 import { TaskService } from '../task.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { TaskService } from '../task.service';
   styleUrls: ['./task-board.component.scss'],
 })
 export class TaskBoardComponent implements OnInit {
-  taskList: Task[] = [];
+  taskList: TaskBase[] = [];
 
   taskStatus = TaskStatus;
 
@@ -19,14 +19,20 @@ export class TaskBoardComponent implements OnInit {
   }
 
   getTasks() {
-    this.taskService.getTasks().subscribe((data: Task[]) => {
+    this.taskService.getTasks().subscribe((data: TaskBase[]) => {
       this.taskList = data;
     });
   }
 
-  getTaskListByStatus(status: string): Task[] {
+  getTaskListByStatus(status: string): TaskBase[] {
     return this.taskList.filter((task) => {
       return task.status === status;
     });
+  }
+
+  onStatusChanged(statusChanged: boolean) {
+    if (statusChanged) {
+      this.getTasks();
+    }
   }
 }

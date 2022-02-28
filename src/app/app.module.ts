@@ -8,7 +8,6 @@ import { TaskComponent } from './task/task.component';
 import { TaskBoardComponent } from './task-board/task-board.component';
 import { EnumToArrayPipe } from './enum-to-array.pipe';
 import { ModalComponent } from './modal/modal.component';
-import { ClickOutsideDirective } from './click-outside.directive';
 import { XButtonComponent } from './svg/x-button.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -23,7 +22,6 @@ import { HttpClientModule } from '@angular/common/http';
     TaskBoardComponent,
     EnumToArrayPipe,
     ModalComponent,
-    ClickOutsideDirective,
     XButtonComponent,
   ],
   imports: [

@@ -1,11 +1,13 @@
-<div class="task" *ngIf="task" (click)="openModal()">
-  <h1>{{ task.name }}</h1>
-  <p>{{ task.status }}</p>
-</div>
+<div *ngIf="task">
+  <div class="task" (click)="openModal()">
+    <h1>{{ task.name }}</h1>
+    <p>{{ task.status }}</p>
+  </div>
 
-<app-modal
-  [(isVisible)]="modalOpen"
-  [taskId]="task.id"
-  (statusChanged)="onStatusChanged($event)"
->
-</app-modal>
+  <app-modal
+    [(isVisible)]="modalOpen"
+    [taskId]="task.id"
+    (statusChanged)="onStatusChanged($event)"
+  >
+  </app-modal>
+</div>

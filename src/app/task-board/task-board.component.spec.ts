@@ -1,27 +1,24 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Task, TaskStatus } from 'src/models/task';
+import { TaskBase, TaskStatus } from 'src/models/task';
 import { EnumToArrayPipe } from '../enum-to-array.pipe';
 
 import { TaskBoardComponent } from './task-board.component';
 
-const tasks: Task[] = [
+const tasks: TaskBase[] = [
   {
     id: 1,
     name: 'task to do',
-    description: 'desc',
     status: TaskStatus.TODO,
   },
   {
     id: 2,
     name: 'task in progress',
-    description: 'desc',
     status: TaskStatus.INPROGRESS,
   },
   {
     id: 3,
     name: 'task done',
-    description: 'desc',
     status: TaskStatus.DONE,
   },
 ];
@@ -55,7 +52,6 @@ describe('TaskBoardComponent', () => {
         {
           id: 1,
           name: 'task to do',
-          description: 'desc',
           status: TaskStatus.TODO,
         },
       ]);
@@ -66,7 +62,6 @@ describe('TaskBoardComponent', () => {
         {
           id: 2,
           name: 'task in progress',
-          description: 'desc',
           status: TaskStatus.INPROGRESS,
         },
       ]);
@@ -77,7 +72,6 @@ describe('TaskBoardComponent', () => {
         {
           id: 3,
           name: 'task done',
-          description: 'desc',
           status: TaskStatus.DONE,
         },
       ]);

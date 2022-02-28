@@ -44,4 +44,8 @@
     </div>
   </div>
 </div>
-<div class="background" [ngStyle]="{ display: getDisplay() }"></div>
+<div
+  class="background"
+  [ngStyle]="{ display: getDisplay() }"
+  (click)="modalClose()"
+></div>

@@ -83,7 +83,7 @@
       background-color: colors.$button-yellow-1;
       color: colors.$button-text-dark-1;
       border: none;
-      border-radius: 0.5rem;
+      border-radius: size.$border-radius-s;
       margin: 0.5rem;
       margin-right: 0;
       align-self: flex-end;
@@ -99,8 +99,4 @@
       color: colors.$text-light-3;
     }
   }
-}
-
-.ng-select.custom {
-  // border-radius: size.$border-radius-s;
 }

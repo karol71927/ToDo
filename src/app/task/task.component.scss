@@ -1,9 +1,14 @@
 @use "../../colors.scss";
+@use "../../size.scss";
 
 .task {
   display: block;
   margin: 1rem;
   padding: 1rem;
-  border: 1px solid black;
   background-color: colors.$background-dark-2;
+
+  &_name {
+    font-size: size.$text-size-xl;
+    color: colors.$text-light-2;
+  }
 }

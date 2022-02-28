@@ -1,8 +1,10 @@
 @use "colors.scss";
+@use "size.scss";
 @import "~@ng-select/ng-select/themes/default.theme.css";
 
 body {
   background-color: colors.$background-dark-1;
+  font-size: size.$text-size-default;
 }
 
 h1 {

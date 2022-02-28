@@ -12,10 +12,30 @@
 
     &_header {
       background-color: colors.$background-dark-4;
-      font-size: 2rem;
+      font-size: size.$text-size-xxl;
       color: colors.$text-light-1;
       padding: 1rem;
       border-radius: size.$border-radius-xl size.$border-radius-xl 0 0;
+    }
+  }
+}
+
+.add-task-button {
+  margin: 20px;
+  background-color: colors.$button-yellow-1;
+  color: colors.$button-text-dark-1;
+  border: none;
+  border-radius: size.$border-radius-m;
+  font-size: size.$text-size-l;
+}
+
+@media screen and (max-width: 600px) {
+  .board {
+    display: flex;
+    flex-direction: column;
+
+    &_column {
+      margin: 20px 10px;
     }
   }
 }

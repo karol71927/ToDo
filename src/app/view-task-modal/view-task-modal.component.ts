@@ -1,23 +1,14 @@
-import {
-  AfterContentChecked,
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Comment, Task, TaskStatus } from 'src/models/task';
 import { TaskService } from '../task.service';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss'],
+  selector: 'app-view-task-modal',
+  templateUrl: './view-task-modal.component.html',
+  styleUrls: ['./view-task-modal.component.scss'],
 })
-export class ModalComponent implements OnInit {
+export class ViewTaskModalComponent implements OnInit {
   @Input()
   isVisible: boolean;
   @Output()

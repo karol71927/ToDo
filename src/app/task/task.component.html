@@ -4,10 +4,10 @@
     <p>{{ task.status }}</p>
   </div>
 
-  <app-modal
+  <app-view-task-modal
     [(isVisible)]="modalOpen"
     [taskId]="task.id"
     (statusChanged)="onStatusChanged($event)"
   >
-  </app-modal>
+  </app-view-task-modal>
 </div>

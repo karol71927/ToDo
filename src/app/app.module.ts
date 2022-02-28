@@ -7,12 +7,13 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TaskComponent } from './task/task.component';
 import { TaskBoardComponent } from './task-board/task-board.component';
 import { EnumToArrayPipe } from './enum-to-array.pipe';
-import { ModalComponent } from './modal/modal.component';
+import { ViewTaskModalComponent } from './view-task-modal/view-task-modal.component';
 import { XButtonComponent } from './svg/x-button.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { fakeBackendProvider } from 'src/fake-backend/fakeBackend';
 import { HttpClientModule } from '@angular/common/http';
+import { AddTaskModalComponent } from './add-task-modal/add-task-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
     TaskComponent,
     TaskBoardComponent,
     EnumToArrayPipe,
-    ModalComponent,
+    ViewTaskModalComponent,
     XButtonComponent,
+    AddTaskModalComponent,
   ],
   imports: [
     BrowserModule,

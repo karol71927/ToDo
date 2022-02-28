@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Task, TaskStatus } from 'src/models/task';
 
-import { ModalComponent } from './modal.component';
+import { ViewTaskModalComponent } from './view-task-modal.component';
 
 const task: Task = {
   id: 1,
@@ -19,19 +19,19 @@ const task: Task = {
 };
 
 describe('ModalComponent', () => {
-  let component: ModalComponent;
-  let fixture: ComponentFixture<ModalComponent>;
+  let component: ViewTaskModalComponent;
+  let fixture: ComponentFixture<ViewTaskModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ModalComponent],
+      declarations: [ViewTaskModalComponent],
       imports: [ReactiveFormsModule, HttpClientTestingModule],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModalComponent);
+    fixture = TestBed.createComponent(ViewTaskModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

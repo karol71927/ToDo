@@ -55,15 +55,4 @@ describe('ModalComponent', () => {
       ],
     });
   });
-
-  describe('should get display', () => {
-    it('display should be none', () => {
-      component.isVisible = false;
-      expect(component.getDisplay()).toEqual('none');
-    });
-    it('display should be block', () => {
-      component.isVisible = true;
-      expect(component.getDisplay()).toEqual('block');
-    });
-  });
 });

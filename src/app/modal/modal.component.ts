@@ -1,15 +1,18 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-add-task-modal',
-  templateUrl: './add-task-modal.component.html',
-  styleUrls: ['./add-task-modal.component.scss'],
+  selector: 'app-modal',
+  templateUrl: './modal.component.html',
+  styleUrls: ['./modal.component.scss'],
 })
-export class AddTaskModalComponent implements OnInit {
+export class ModalComponent implements OnInit {
   @Input()
   isOpened: boolean;
   @Output()
   isOpenedChange = new EventEmitter<boolean>();
+
+  @Input()
+  title: string;
 
   constructor() {}
 

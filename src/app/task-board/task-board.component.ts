@@ -12,6 +12,8 @@ export class TaskBoardComponent implements OnInit {
 
   taskStatus = TaskStatus;
 
+  isAddTaskModalOpen: boolean = false;
+
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
@@ -34,5 +36,9 @@ export class TaskBoardComponent implements OnInit {
     if (statusChanged) {
       this.getTasks();
     }
+  }
+
+  openAddTaskModal() {
+    this.isAddTaskModalOpen = true;
   }
 }

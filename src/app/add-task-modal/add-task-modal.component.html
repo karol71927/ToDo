@@ -1,1 +1,9 @@
-<p>add-task-modal works!</p>
+<div *ngIf="isOpened">
+  <app-modal
+    [isOpened]="isOpened"
+    (isOpenedChange)="modalClose()"
+    title="Add task"
+  >
+    Add task window
+  </app-modal>
+</div>

@@ -72,13 +72,6 @@ export class ViewTaskModalComponent implements OnInit {
     }
   }
 
-  getDisplay(): string {
-    if (!this.isVisible) {
-      return 'none';
-    }
-    return 'block';
-  }
-
   modalClose() {
     this.updateStatus();
     if (this.isVisible) this.isVisibleChange.emit(false);

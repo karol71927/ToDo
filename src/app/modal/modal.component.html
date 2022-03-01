@@ -1,0 +1,12 @@
+<div *ngIf="isOpened">
+  <div class="modal">
+    <div class="modal_title-container">
+      <div class="modal_title">{{ title }}</div>
+      <div class="modal_close-button" (click)="modalClose()">
+        <svg-x-button fillColor="#fff"></svg-x-button>
+      </div>
+    </div>
+    <ng-content></ng-content>
+  </div>
+  <div class="background" (click)="modalClose()"></div>
+</div>

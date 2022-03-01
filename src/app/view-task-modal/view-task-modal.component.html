@@ -1,51 +1,46 @@
-<div [ngStyle]="{ display: getDisplay() }" class="modal" *ngIf="task">
-  <div class="modal_title-container">
-    <div class="modal_title">{{ task.name }}</div>
-    <div class="modal_close-button" (click)="modalClose()">
-      <svg-x-button fillColor="#fff"></svg-x-button>
-    </div>
-  </div>
-  <div class="modal_body">
-    <div class="modal_select_container">
-      <div class="modal_select">
-        <ng-select
-          [items]="status"
-          bindLabel="name"
-          bindValue="id"
-          [(ngModel)]="selectedStatus"
-          class="custom"
-          [clearable]="false"
-        ></ng-select>
+<div *ngIf="task">
+  <app-modal
+    [isOpened]="isVisible"
+    (isOpenedChange)="modalClose()"
+    [title]="task.name"
+  >
+    <div class="modal_body">
+      <div class="modal_select_container">
+        <div class="modal_select">
+          <ng-select
+            [items]="status"
+            bindLabel="name"
+            bindValue="id"
+            [(ngModel)]="selectedStatus"
+            class="custom"
+            [clearable]="false"
+          ></ng-select>
+        </div>
+        Selected {{ selectedStatus }}
       </div>
-      Selected {{ selectedStatus }}
-    </div>
-    <div class="modal_description">
-      Description:<br />
-      {{ task.description }}
-    </div>
-    <form
-      class="modal_add-comment"
-      [formGroup]="commentForm"
-      (ngSubmit)="onSubmitComment()"
-    >
-      <textarea
-        rows="4"
-        class="modal_add-comment_text"
-        formControlName="content"
-        placeholder="Add a comment"
-      ></textarea>
-      <button class="modal_add-comment_save-button">Save</button>
-    </form>
-    <div *ngFor="let comment of task.comments" class="modal_comment">
-      <div>{{ comment.content }}</div>
-      <div class="modal_comment_date">
-        {{ comment.date | date: "dd.MM.YY HH:mm:ss" }}
+      <div class="modal_description">
+        Description:<br />
+        {{ task.description }}
+      </div>
+      <form
+        class="modal_add-comment"
+        [formGroup]="commentForm"
+        (ngSubmit)="onSubmitComment()"
+      >
+        <textarea
+          rows="4"
+          class="modal_add-comment_text"
+          formControlName="content"
+          placeholder="Add a comment"
+        ></textarea>
+        <button class="modal_add-comment_save-button">Save</button>
+      </form>
+      <div *ngFor="let comment of task.comments" class="modal_comment">
+        <div>{{ comment.content }}</div>
+        <div class="modal_comment_date">
+          {{ comment.date | date: "dd.MM.YY HH:mm:ss" }}
+        </div>
       </div>
     </div>
-  </div>
+  </app-modal>
 </div>
-<div
-  class="background"
-  [ngStyle]="{ display: getDisplay() }"
-  (click)="modalClose()"
-></div>

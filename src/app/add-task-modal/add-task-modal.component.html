@@ -4,6 +4,25 @@
     (isOpenedChange)="modalClose()"
     title="Add task"
   >
-    Add task window
+    <div class="modal_body">
+      <form
+        class="modal_body_add-task"
+        [formGroup]="taskForm"
+        (ngSubmit)="onFormSubmit()"
+      >
+        <input
+          placeholder="Task name"
+          class="modal_add-task_text"
+          formControlName="name"
+        />
+        <textarea
+          rows="10"
+          class="modal_add-task_text"
+          placeholder="Add description"
+          formControlName="description"
+        ></textarea>
+        <button class="modal_add-task_save-button">Save</button>
+      </form>
+    </div>
   </app-modal>
 </div>

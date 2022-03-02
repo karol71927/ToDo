@@ -41,4 +41,11 @@ export class TaskBoardComponent implements OnInit {
   openAddTaskModal() {
     this.isAddTaskModalOpen = true;
   }
+
+  onTaskAdded(isAdded: boolean) {
+    if (!isAdded) {
+      return;
+    }
+    this.getTasks();
+  }
 }

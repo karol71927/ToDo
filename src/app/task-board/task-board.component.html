@@ -1,5 +1,8 @@
 <button class="add-task-button" (click)="openAddTaskModal()">+ Add task</button>
-<app-add-task-modal [(isOpened)]="isAddTaskModalOpen"></app-add-task-modal>
+<app-add-task-modal
+  [(isOpened)]="isAddTaskModalOpen"
+  (taskAdded)="onTaskAdded($event)"
+></app-add-task-modal>
 <div *ngIf="taskList" class="board">
   <div *ngFor="let status of taskStatus | enumToArray" class="board_column">
     <div class="board_column_header">{{ status }}</div>

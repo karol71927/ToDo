@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AddTaskModalComponent } from './add-task-modal.component';
 
@@ -8,9 +10,9 @@ describe('AddTaskModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddTaskModalComponent ]
-    })
-    .compileComponents();
+      declarations: [AddTaskModalComponent],
+      imports: [ReactiveFormsModule, HttpClientTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

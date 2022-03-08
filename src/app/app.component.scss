@@ -1,0 +1,16 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 220px;
+  display: flex;
+  flex-direction: row;
+
+  &_calendar {
+    align-self: flex-end;
+  }
+}
+
+.content {
+  margin-left: 220px;
+}

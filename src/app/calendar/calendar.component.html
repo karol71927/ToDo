@@ -1,0 +1,6 @@
+<div class="calendar">
+  <div *ngFor="let name of dayNames | enumToArray" class="calendar_day">
+    {{ name }}
+  </div>
+  <div *ngFor="let day of days" class="calendar_day">{{ day.day }}</div>
+</div>

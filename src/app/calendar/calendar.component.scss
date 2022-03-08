@@ -1,0 +1,11 @@
+@use "../../colors.scss";
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin: 5px;
+
+  &_day {
+    color: colors.$text-light-2;
+  }
+}

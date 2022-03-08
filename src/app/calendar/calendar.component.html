@@ -1,3 +1,6 @@
+<button (click)="getNextMonth()">next</button>
+<button (click)="getPreviousMonth()">previous</button>
+<p>{{ month }} {{ year }}</p>
 <div class="calendar">
   <div *ngFor="let name of dayNames | enumToArray" class="calendar_day">
     {{ name }}

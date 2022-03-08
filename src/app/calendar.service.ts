@@ -5,19 +5,12 @@ import { Day, DayName, MonthName } from 'src/models/calendar.model';
   providedIn: 'root',
 })
 export class CalendarService {
-  // currentMonth: number;
-  // currentYear: number;
-
-  constructor() {
-    // let date = new Date();
-    // this.currentYear = date.getFullYear();
-    // this.currentMonth = date.getMonth();
-  }
+  constructor() {}
 
   getMonth(month: number, year: number): Day[] {
     let days = [];
     const firstDay = this.createDay(1, month, year);
-    for (let i = 1; i < firstDay.weekDayNumber; i++) {
+    for (let i = 1; i < firstDay.weekDayNumber + 1; i++) {
       days.push({
         weekDayNumber: i,
         month: month,
@@ -46,12 +39,7 @@ export class CalendarService {
   }
 
   private getWeekDayName(day: number): DayName {
-    // let map = new Map<number,DayName>();
-    // const weekDays = Object.entries(DayName).forEach((entry, index) => {
-    //   map.set(index, entry[1]);
-    // });
-    // const weekDayName =  map.get(weekDay) ? map.get(weekDay) : DayName.Monday;
-    // return weekDayName ? weekDayName : DayName.Monday;
+    console.log(Object.entries(DayName), day, Object.entries(DayName)[day][1]);
     return Object.entries(DayName)[day][1];
   }
 

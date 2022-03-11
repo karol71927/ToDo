@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddTaskModalComponent } from './add-task-modal/add-task-modal.component';
 import { ModalComponent } from './modal/modal.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { ChevronComponent } from './svg/chevron.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CalendarComponent } from './calendar/calendar.component';
     AddTaskModalComponent,
     ModalComponent,
     CalendarComponent,
+    ChevronComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,3 +9,8 @@
     color: colors.$text-light-2;
   }
 }
+
+.calendar-legend {
+  display: flex;
+  justify-content: space-between;
+}

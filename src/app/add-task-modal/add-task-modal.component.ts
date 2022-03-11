@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Task, TaskStatus } from 'src/models/task';
 import { TaskService } from '../task.service';
 
@@ -17,17 +17,37 @@ export class AddTaskModalComponent implements OnInit {
   @Output()
   taskAdded = new EventEmitter<boolean>();
 
-  taskForm = this.formBuilder.group({
-    name: '',
-    description: '',
-  });
+  task: Task = { name: '', description: '', status: TaskStatus.TODO, id: 1 };
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private taskService: TaskService
-  ) {}
+  taskForm: FormGroup;
 
-  ngOnInit(): void {}
+  constructor(private taskService: TaskService) {}
+
+  ngOnInit(): void {
+    this.taskForm = this.createForm();
+  }
+
+  createForm(): FormGroup {
+    return new FormGroup({
+      name: new FormControl(this.task.name, [
+        Validators.required,
+        Validators.minLength(10),
+      ]),
+      description: new FormControl(this.task.description, [
+        Validators.required,
+        Validators.minLength(50),
+      ]),
+      date: new FormControl(this.task.dueDate),
+    });
+  }
+
+  get name() {
+    return this.taskForm.get('name');
+  }
+
+  get description() {
+    return this.taskForm.get('descruption');
+  }
 
   modalClose() {
     this.isOpenedChange.emit(false);
@@ -39,6 +59,8 @@ export class AddTaskModalComponent implements OnInit {
       name: this.taskForm.value.name,
       status: TaskStatus.TODO,
       description: this.taskForm.value.description,
+      dueDate:
+        this.taskForm.value.date !== '' ? this.taskForm.value.date : undefined,
     };
     this.taskService.addTask(task).subscribe(() => {
       this.taskAdded.emit(true);

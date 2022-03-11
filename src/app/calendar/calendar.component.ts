@@ -29,7 +29,6 @@ export class CalendarComponent implements OnInit {
       date.getMonth(),
       date.getFullYear()
     );
-    console.log(this.days);
     this.getNames();
   }
 

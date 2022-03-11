@@ -14,14 +14,43 @@
           placeholder="Task name"
           class="modal_add-task_text"
           formControlName="name"
+          required
         />
+        <div
+          *ngIf="name?.invalid && (name?.dirty || name?.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="name?.errors?.['required']">Name is required.</div>
+          <div *ngIf="name?.errors?.['minlength']">
+            Name must be at least 10 characters long.
+          </div>
+        </div>
+        <input type="date" class="modal_add-task_date" formControlName="date" />
         <textarea
           rows="10"
           class="modal_add-task_text"
           placeholder="Add description"
           formControlName="description"
+          required
         ></textarea>
-        <button class="modal_add-task_save-button">Save</button>
+        <div
+          *ngIf="
+            description?.invalid && (description?.dirty || description?.touched)
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="description?.errors?.['required']">Name is required.</div>
+          <div *ngIf="description?.errors?.['minlength']">
+            Description must be at least 50 characters long.
+          </div>
+        </div>
+        <button
+          [disabled]="taskForm.invalid"
+          class="modal_add-task_save-button"
+        >
+          Save
+        </button>
+        <p>{{ taskForm.status }}</p>
       </form>
     </div>
   </app-modal>

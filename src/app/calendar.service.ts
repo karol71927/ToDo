@@ -39,7 +39,6 @@ export class CalendarService {
   }
 
   private getWeekDayName(day: number): DayName {
-    console.log(Object.entries(DayName), day, Object.entries(DayName)[day][1]);
     return Object.entries(DayName)[day][1];
   }
 

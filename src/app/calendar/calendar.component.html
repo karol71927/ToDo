@@ -1,9 +1,9 @@
 <div class="calendar-legend">
-  <button (click)="getPreviousMonth()">
+  <button (click)="getPreviousMonth()" class="calendar-legend_button">
     <svg-chevron direction="left"></svg-chevron>
   </button>
   <p>{{ month }} {{ year }}</p>
-  <button (click)="getNextMonth()">
+  <button (click)="getNextMonth()" class="calendar-legend_button">
     <svg-chevron></svg-chevron>
   </button>
 </div>

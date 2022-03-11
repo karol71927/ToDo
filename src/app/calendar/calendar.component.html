@@ -1,0 +1,15 @@
+<div class="calendar-legend">
+  <button (click)="getPreviousMonth()" class="calendar-legend_button">
+    <svg-chevron direction="left"></svg-chevron>
+  </button>
+  <p>{{ month }} {{ year }}</p>
+  <button (click)="getNextMonth()" class="calendar-legend_button">
+    <svg-chevron></svg-chevron>
+  </button>
+</div>
+<div class="calendar">
+  <div *ngFor="let name of dayNames | enumToArray" class="calendar_day">
+    {{ name }}
+  </div>
+  <div *ngFor="let day of days" class="calendar_day">{{ day.day }}</div>
+</div>

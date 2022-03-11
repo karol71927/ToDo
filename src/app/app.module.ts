@@ -15,6 +15,8 @@ import { fakeBackendProvider } from 'src/fake-backend/fakeBackend';
 import { HttpClientModule } from '@angular/common/http';
 import { AddTaskModalComponent } from './add-task-modal/add-task-modal.component';
 import { ModalComponent } from './modal/modal.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { ChevronComponent } from './svg/chevron.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { ModalComponent } from './modal/modal.component';
     XButtonComponent,
     AddTaskModalComponent,
     ModalComponent,
+    CalendarComponent,
+    ChevronComponent,
   ],
   imports: [
     BrowserModule,

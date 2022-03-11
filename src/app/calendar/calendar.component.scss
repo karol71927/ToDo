@@ -1,0 +1,30 @@
+@use "../../colors.scss";
+@use "../../size.scss";
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin: 5px;
+
+  &_day {
+    color: colors.$text-light-2;
+  }
+}
+
+.calendar-legend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+
+  &_button {
+    border-radius: size.$border-radius-m;
+    background-color: colors.$button-yellow-1;
+    border: none;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -56,6 +56,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             id: task.id,
             name: task.name,
             status: task.status,
+            dueDate: task.dueDate,
           };
         })
       );

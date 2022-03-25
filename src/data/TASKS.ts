@@ -24,12 +24,14 @@ export const taskList: Task[] = [
         date: new Date('2022-02-22'),
       },
     ],
+    dueDate: new Date('2022-03-15'),
   },
   {
     id: 2,
     name: 'rzecz do zrobienia 2',
     description: 'opis',
     status: TaskStatus.INPROGRESS,
+    dueDate: new Date('2022-03-19'),
   },
   {
     id: 3,

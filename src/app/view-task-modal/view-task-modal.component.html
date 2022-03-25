@@ -16,11 +16,14 @@
             [clearable]="false"
           ></ng-select>
         </div>
-        Selected {{ selectedStatus }}
       </div>
       <div class="modal_description">
         Description:<br />
         {{ task.description }}
+      </div>
+      <div *ngIf="task.dueDate" class="modal_due-date">
+        Due date:
+        {{ task?.dueDate | date: "dd MMM YY" }}
       </div>
       <form
         class="modal_add-comment"

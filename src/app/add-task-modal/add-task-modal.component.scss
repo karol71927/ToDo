@@ -23,6 +23,12 @@
       margin: 0.5rem 0;
     }
 
+    &_date {
+      border: none;
+      border-radius: size.$border-radius-s;
+      margin: 0.5rem 0;
+    }
+
     &_save-button {
       background-color: colors.$button-yellow-1;
       color: colors.$button-text-dark-1;

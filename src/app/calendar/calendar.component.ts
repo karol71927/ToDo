@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Day, DayName, MonthName } from 'src/models/calendar.model';
 import { CalendarService } from '../calendar.service';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-calendar',
@@ -9,6 +10,7 @@ import { CalendarService } from '../calendar.service';
 })
 export class CalendarComponent implements OnInit {
   days: Day[];
+  dueDays: Day[];
 
   dayNames = DayName;
 
@@ -17,11 +19,50 @@ export class CalendarComponent implements OnInit {
   month?: MonthName;
   year?: number;
 
-  constructor(private calendarService: CalendarService) {}
+  constructor(
+    private calendarService: CalendarService,
+    private taskService: TaskService
+  ) {}
 
   ngOnInit(): void {
     this.date = new Date();
     this.getMonth(this.date);
+    this.getDueDates();
+  }
+
+  getDueDates() {
+    this.taskService.getDueDates().subscribe((response) => {
+      this.dueDays = [];
+      response.forEach((date) => {
+        this.dueDays.push(this.calendarService.convertDateToDay(date));
+      });
+    });
+  }
+
+  isDueDay(day: Day): boolean {
+    if (this.dueDays) {
+      const index = this.dueDays.findIndex((dueDay) => {
+        if (
+          dueDay.day === day.day &&
+          dueDay.month === day.month &&
+          dueDay.year === day.year
+        ) {
+          return true;
+        }
+        return false;
+      });
+      return index !== -1;
+    }
+    return false;
+  }
+
+  isToday(day: Day): boolean {
+    const today = this.calendarService.convertDateToDay(new Date());
+    return (
+      today.day === day.day &&
+      today.month === day.month &&
+      today.year === day.year
+    );
   }
 
   getMonth(date: Date) {
@@ -29,7 +70,6 @@ export class CalendarComponent implements OnInit {
       date.getMonth(),
       date.getFullYear()
     );
-    console.log(this.days);
     this.getNames();
   }
 

@@ -2,13 +2,21 @@
 @use "../../size.scss";
 
 .task {
-  display: block;
   margin: 1rem;
   padding: 1rem;
   background-color: colors.$background-dark-2;
+  display: flex;
+  flex-direction: column;
 
   &_name {
     font-size: size.$text-size-xl;
     color: colors.$text-light-2;
+  }
+
+  &_date {
+    font-size: size.$text-size-s;
+    color: colors.$text-light-3;
+    margin: 1rem 0 0.3rem 0;
+    align-self: flex-end;
   }
 }

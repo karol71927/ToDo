@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Day, DayName, MonthName } from 'src/models/calendar.model';
 import { EnumToArrayPipe } from '../enum-to-array.pipe';
@@ -11,6 +12,7 @@ describe('CalendarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CalendarComponent, EnumToArrayPipe],
+      imports: [HttpClientTestingModule],
     }).compileComponents();
   });
 

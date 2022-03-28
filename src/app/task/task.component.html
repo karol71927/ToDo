@@ -1,7 +1,7 @@
 <div *ngIf="task">
   <div class="task" (click)="openModal()">
     <div class="task_name">{{ task.name }}</div>
-    <p>{{ task.status }}</p>
+    <div class="task_date">{{ task.dueDate | date: "dd MMM YY" }}</div>
   </div>
 
   <app-view-task-modal

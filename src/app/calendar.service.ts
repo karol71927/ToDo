@@ -39,11 +39,14 @@ export class CalendarService {
   }
 
   private getWeekDayName(day: number): DayName {
-    console.log(Object.entries(DayName), day, Object.entries(DayName)[day][1]);
     return Object.entries(DayName)[day][1];
   }
 
   private getMonthName(month: number): MonthName {
     return Object.entries(MonthName)[month][1];
+  }
+
+  convertDateToDay(date: Date): Day {
+    return this.createDay(date.getDate(), date.getMonth(), date.getFullYear());
   }
 }

@@ -13,6 +13,7 @@ export interface TaskBase {
   id: number;
   name: string;
   status: TaskStatus;
+  dueDate?: Date;
 }
 
 export interface Task extends TaskBase {

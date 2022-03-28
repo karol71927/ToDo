@@ -44,9 +44,21 @@ export class FakeBackendInterceptor implements HttpInterceptor {
           return getTaskById();
         case url.match(/\/tasks\/\d+$/) && method === 'PUT':
           return updateTask();
+        case url.endsWith('/dueDates') && method === 'GET':
+          return getDueDates();
         default:
           return next.handle(req);
       }
+    }
+
+    function getDueDates(): Observable<HttpResponse<Date[]>> {
+      let dates: Date[] = [];
+      taskList.forEach((task) => {
+        if (task.dueDate) {
+          dates.push(task.dueDate);
+        }
+      });
+      return ok(dates);
     }
 
     function getTasks(): Observable<HttpResponse<TaskBase[]>> {

@@ -26,4 +26,8 @@ export class TaskService {
   addTask(task: Task) {
     return this.httpClient.post(`${this.baseUrl}/tasks`, task);
   }
+
+  getDueDates(): Observable<Date[]> {
+    return this.httpClient.get<Date[]>(`${this.baseUrl}/dueDates`);
+  }
 }

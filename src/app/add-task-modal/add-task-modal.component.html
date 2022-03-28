@@ -39,7 +39,9 @@
           "
           class="alert alert-danger"
         >
-          <div *ngIf="description?.errors?.['required']">Name is required.</div>
+          <div *ngIf="description?.errors?.['required']">
+            Description is required.
+          </div>
           <div *ngIf="description?.errors?.['minlength']">
             Description must be at least 50 characters long.
           </div>
@@ -50,7 +52,6 @@
         >
           Save
         </button>
-        <p>{{ taskForm.status }}</p>
       </form>
     </div>
   </app-modal>

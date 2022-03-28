@@ -45,4 +45,8 @@ export class CalendarService {
   private getMonthName(month: number): MonthName {
     return Object.entries(MonthName)[month][1];
   }
+
+  convertDateToDay(date: Date): Day {
+    return this.createDay(date.getDate(), date.getMonth(), date.getFullYear());
+  }
 }

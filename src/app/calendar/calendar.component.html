@@ -19,8 +19,15 @@
         calendar_day_highlighted: isDueDay(day),
         calendar_day_today: isToday(day)
       }"
+      (click)="openModal(day)"
     >
       {{ day.day }}
     </div>
   </div>
 </div>
+
+<app-calendar-task-modal
+  *ngIf="selectedDate"
+  [date]="selectedDate"
+  [(isVisible)]="isModalOpened"
+></app-calendar-task-modal>

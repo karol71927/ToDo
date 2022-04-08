@@ -46,9 +46,22 @@ export class FakeBackendInterceptor implements HttpInterceptor {
           return updateTask();
         case url.endsWith('/dueDates') && method === 'GET':
           return getDueDates();
+        case url.match(/\/tasks\?day=\d{4}-\d{2}-\d{2}/) && method === 'GET':
+          return getTasksByDate();
         default:
           return next.handle(req);
       }
+    }
+
+    function getTasksByDate(): Observable<HttpResponse<Task[]>> {
+      let tasks: Task[] = [];
+      const dateString = url.substring(url.indexOf('=') + 1);
+      taskList.forEach((task) => {
+        if (task.dueDate?.getTime() === new Date(dateString).getTime())
+          tasks.push(task);
+      });
+      console.table(tasks);
+      return ok(tasks);
     }
 
     function getDueDates(): Observable<HttpResponse<Date[]>> {

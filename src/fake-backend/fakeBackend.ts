@@ -60,7 +60,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         if (task.dueDate?.getTime() === new Date(dateString).getTime())
           tasks.push(task);
       });
-      console.table(tasks);
       return ok(tasks);
     }
 
@@ -88,6 +87,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     }
 
     function addTask(): Observable<HttpResponse<any>> {
+      body.id = taskList.length + 1;
       taskList.push(body);
       return okCreated();
     }

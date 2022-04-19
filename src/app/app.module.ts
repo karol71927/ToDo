@@ -19,6 +19,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { ChevronComponent } from './svg/chevron.component';
 import { CalendarTaskModalComponent } from './calendar-task-modal/calendar-task-modal.component';
 import { DatePipe } from '@angular/common';
+import { ClockComponent } from './clock/clock.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { DatePipe } from '@angular/common';
     CalendarComponent,
     ChevronComponent,
     CalendarTaskModalComponent,
+    ClockComponent,
   ],
   imports: [
     BrowserModule,

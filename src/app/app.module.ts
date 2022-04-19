@@ -17,6 +17,8 @@ import { AddTaskModalComponent } from './add-task-modal/add-task-modal.component
 import { ModalComponent } from './modal/modal.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ChevronComponent } from './svg/chevron.component';
+import { CalendarTaskModalComponent } from './calendar-task-modal/calendar-task-modal.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { ChevronComponent } from './svg/chevron.component';
     ModalComponent,
     CalendarComponent,
     ChevronComponent,
+    CalendarTaskModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,7 @@ import { ChevronComponent } from './svg/chevron.component';
     NgSelectModule,
     HttpClientModule,
   ],
-  providers: [fakeBackendProvider],
+  providers: [fakeBackendProvider, DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -30,4 +30,14 @@ export class TaskService {
   getDueDates(): Observable<Date[]> {
     return this.httpClient.get<Date[]>(`${this.baseUrl}/dueDates`);
   }
+
+  getTasksByDueDate(date: Date): Observable<Task[]> {
+    let day: string = '' + date.getDate();
+    let month: string = '' + (date.getMonth() + 1);
+    const year = date.getFullYear();
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+    const url = `${this.baseUrl}/tasks?day=${year}-${month}-${day}`;
+    return this.httpClient.get<Task[]>(url);
+  }
 }

@@ -49,4 +49,9 @@ export class CalendarService {
   convertDateToDay(date: Date): Day {
     return this.createDay(date.getDate(), date.getMonth(), date.getFullYear());
   }
+
+  convertDayToDate(day: Day): Date {
+    const date = new Date(`${day.year}.${day.month + 1}.${day.day}`);
+    return date;
+  }
 }

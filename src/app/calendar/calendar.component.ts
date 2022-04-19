@@ -19,6 +19,9 @@ export class CalendarComponent implements OnInit {
   month?: MonthName;
   year?: number;
 
+  isModalOpened: boolean = false;
+  selectedDate: Date;
+
   constructor(
     private calendarService: CalendarService,
     private taskService: TaskService
@@ -37,6 +40,11 @@ export class CalendarComponent implements OnInit {
         this.dueDays.push(this.calendarService.convertDateToDay(date));
       });
     });
+  }
+
+  openModal(day: Day) {
+    this.selectedDate = this.calendarService.convertDayToDate(day);
+    this.isModalOpened = true;
   }
 
   isDueDay(day: Day): boolean {

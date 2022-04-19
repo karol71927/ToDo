@@ -1,0 +1,11 @@
+<app-modal
+  [isOpened]="isVisible"
+  (isOpenedChange)="modalClose()"
+  [title]="title"
+>
+  <div *ngIf="tasks">
+    <div *ngFor="let task of tasks">
+      {{ task.name }}
+    </div>
+  </div>
+</app-modal>

@@ -1,5 +1,11 @@
 import { DatePipe } from '@angular/common';
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+} from '@angular/core';
 import { Day } from 'src/models/calendar.model';
 import { Task } from 'src/models/task';
 import { TaskService } from '../task.service';
@@ -9,7 +15,7 @@ import { TaskService } from '../task.service';
   templateUrl: './calendar-task-modal.component.html',
   styleUrls: ['./calendar-task-modal.component.scss'],
 })
-export class CalendarTaskModalComponent implements OnInit {
+export class CalendarTaskModalComponent implements OnChanges {
   @Input()
   isVisible: boolean;
   @Output()
@@ -24,13 +30,10 @@ export class CalendarTaskModalComponent implements OnInit {
 
   constructor(private taskService: TaskService, private datePipe: DatePipe) {}
 
-  ngOnInit(): void {
+  ngOnChanges() {
+    console.log('ON changes');
     const date = this.datePipe.transform(this.date, 'dd-MMM-YYYY') as string;
     this.title = `Tasks on ${date}`;
-    this.getTaskByDueDate();
-  }
-
-  onChanges() {
     this.getTaskByDueDate();
   }
 

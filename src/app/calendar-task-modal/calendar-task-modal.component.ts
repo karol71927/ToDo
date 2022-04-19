@@ -1,12 +1,13 @@
-import { DatePipe } from '@angular/common';
+import { formatDate } from '@angular/common';
 import {
   Component,
   Input,
   Output,
   EventEmitter,
   OnChanges,
+  Inject,
+  LOCALE_ID,
 } from '@angular/core';
-import { Day } from 'src/models/calendar.model';
 import { Task } from 'src/models/task';
 import { TaskService } from '../task.service';
 
@@ -28,10 +29,13 @@ export class CalendarTaskModalComponent implements OnChanges {
 
   tasks: Task[];
 
-  constructor(private taskService: TaskService, private datePipe: DatePipe) {}
+  constructor(
+    private taskService: TaskService,
+    @Inject(LOCALE_ID) private locale: string
+  ) {}
 
   ngOnChanges() {
-    const date = this.datePipe.transform(this.date, 'dd-MMM-YYYY') as string;
+    const date = formatDate(this.date, 'dd-MMM-YYYY', this.locale);
     this.title = `Tasks on ${date}`;
     this.getTaskByDueDate();
   }

@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CalendarTaskModalComponent } from './calendar-task-modal.component';
@@ -8,9 +9,9 @@ describe('CalendarTaskModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalendarTaskModalComponent ]
-    })
-    .compileComponents();
+      declarations: [CalendarTaskModalComponent],
+      imports: [HttpClientTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

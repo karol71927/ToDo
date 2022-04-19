@@ -43,7 +43,6 @@ export class CalendarComponent implements OnInit {
   }
 
   openModal(day: Day) {
-    console.log(day);
     this.selectedDate = this.calendarService.convertDayToDate(day);
     this.isModalOpened = true;
   }

@@ -31,14 +31,12 @@ export class CalendarTaskModalComponent implements OnChanges {
   constructor(private taskService: TaskService, private datePipe: DatePipe) {}
 
   ngOnChanges() {
-    console.log('ON changes');
     const date = this.datePipe.transform(this.date, 'dd-MMM-YYYY') as string;
     this.title = `Tasks on ${date}`;
     this.getTaskByDueDate();
   }
 
   getTaskByDueDate() {
-    console.log(this.date);
     this.taskService.getTasksByDueDate(this.date).subscribe((response) => {
       this.tasks = response;
     });

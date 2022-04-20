@@ -46,7 +46,7 @@ export class AddTaskModalComponent implements OnInit {
   }
 
   get description() {
-    return this.taskForm.get('descruption');
+    return this.taskForm.get('description');
   }
 
   modalClose() {

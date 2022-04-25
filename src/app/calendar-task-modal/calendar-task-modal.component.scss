@@ -1,0 +1,21 @@
+@use "../../colors.scss";
+@use "../../size.scss";
+
+.task {
+  background-color: colors.$background-dark-3;
+  margin: 10px 30px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+  &_name {
+    color: colors.$text-light-1;
+    font-size: size.$text-size-l;
+  }
+
+  &_status {
+    color: colors.$text-light-3;
+    font-size: size.$text-size-s;
+    align-self: flex-end;
+  }
+}

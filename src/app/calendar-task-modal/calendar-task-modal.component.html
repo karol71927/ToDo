@@ -4,8 +4,11 @@
   [title]="title"
 >
   <div *ngIf="tasks">
-    <div *ngFor="let task of tasks">
-      {{ task.name }}
+    <div class="task" *ngFor="let task of tasks" (click)="clickTask(task.id)">
+      <div class="task_name">{{ task.name }}</div>
+      <div class="task_status">{{ task.status }}</div>
     </div>
   </div>
 </app-modal>
+<app-view-task-modal *ngIf="taskId" [(isVisible)]="modalOpen" [taskId]="taskId">
+</app-view-task-modal>

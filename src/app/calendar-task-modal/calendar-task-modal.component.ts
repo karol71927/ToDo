@@ -29,15 +29,20 @@ export class CalendarTaskModalComponent implements OnChanges {
 
   tasks: Task[];
 
+  modalOpen: boolean = false;
+  taskId: number;
+
   constructor(
     private taskService: TaskService,
     @Inject(LOCALE_ID) private locale: string
   ) {}
 
   ngOnChanges() {
-    const date = formatDate(this.date, 'dd-MMM-YYYY', this.locale);
-    this.title = `Tasks on ${date}`;
-    this.getTaskByDueDate();
+    if (this.date) {
+      const date = formatDate(this.date, 'dd-MMM-YYYY', this.locale);
+      this.title = `Tasks on ${date}`;
+      this.getTaskByDueDate();
+    }
   }
 
   getTaskByDueDate() {
@@ -48,5 +53,10 @@ export class CalendarTaskModalComponent implements OnChanges {
 
   modalClose() {
     if (this.isVisible) this.isVisibleChange.emit(false);
+  }
+
+  clickTask(id: number) {
+    this.modalOpen = true;
+    this.taskId = id;
   }
 }

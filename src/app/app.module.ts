@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TaskListComponent } from './task-list/task-list.component';
@@ -20,6 +21,7 @@ import { ChevronComponent } from './svg/chevron.component';
 import { CalendarTaskModalComponent } from './calendar-task-modal/calendar-task-modal.component';
 import { DatePipe } from '@angular/common';
 import { ClockComponent } from './clock/clock.component';
+import { EmojiPickerComponent } from './emoji-picker/emoji-picker.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { ClockComponent } from './clock/clock.component';
     ChevronComponent,
     CalendarTaskModalComponent,
     ClockComponent,
+    EmojiPickerComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,8 @@ import { ClockComponent } from './clock/clock.component';
     ReactiveFormsModule,
     NgSelectModule,
     HttpClientModule,
+    PickerModule,
+    EmojiModule,
   ],
   providers: [fakeBackendProvider, DatePipe],
   bootstrap: [AppComponent],

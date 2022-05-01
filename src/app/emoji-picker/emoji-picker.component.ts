@@ -11,6 +11,9 @@ export class EmojiPickerComponent implements OnInit {
   isVisible: boolean;
 
   @Output()
+  isVisibleChange = new EventEmitter<boolean>();
+
+  @Output()
   emoji = new EventEmitter<EmojiData>();
 
   constructor() {}
@@ -18,7 +21,10 @@ export class EmojiPickerComponent implements OnInit {
   ngOnInit(): void {}
 
   handleClick($event: EmojiEvent) {
-    console.log($event.emoji);
     this.emoji.emit($event.emoji);
+  }
+
+  closePicker() {
+    if (this.isVisible) this.isVisibleChange.emit(false);
   }
 }

@@ -141,4 +141,8 @@ export class ViewTaskModalComponent implements OnInit {
       content,
     });
   }
+
+  clickEmojiPicker() {
+    this.isEmojiPickerVisible = !this.isEmojiPickerVisible;
+  }
 }

@@ -1,5 +1,14 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { EmojiData } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 import { Comment, Task, TaskStatus } from 'src/models/task';
 import { TaskService } from '../task.service';
 
@@ -22,9 +31,13 @@ export class ViewTaskModalComponent implements OnInit {
 
   task: Task;
 
+  isEmojiPickerVisible: boolean = false;
+
   commentForm = this.formBuilder.group({
     content: '',
   });
+
+  @ViewChild('textArea') _textArea: ElementRef;
 
   selectedStatus: number;
 
@@ -78,6 +91,7 @@ export class ViewTaskModalComponent implements OnInit {
   }
 
   onSubmitComment(): void {
+    if (this.isEmojiPickerVisible) return;
     const comment = {
       content: this.commentForm.value.content,
       date: new Date(Date.now()),
@@ -112,5 +126,23 @@ export class ViewTaskModalComponent implements OnInit {
         this.statusChanged.emit(true);
       }
     }
+  }
+
+  addEmojiToComment(emoji: EmojiData) {
+    const textArea = this._textArea.nativeElement as HTMLTextAreaElement;
+    let content = this.commentForm.value.content as string;
+    if (emoji.native) {
+      content = `${content.substring(0, textArea.selectionStart)}${
+        emoji.native
+      }${content.substring(textArea.selectionEnd)}`;
+      console.log(textArea.selectionStart, textArea.selectionEnd);
+    }
+    this.commentForm.patchValue({
+      content,
+    });
+  }
+
+  clickEmojiPicker() {
+    this.isEmojiPickerVisible = !this.isEmojiPickerVisible;
   }
 }

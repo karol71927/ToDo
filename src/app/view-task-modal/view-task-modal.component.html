@@ -25,18 +25,28 @@
         Due date:
         {{ task?.dueDate | date: "dd MMM YY" }}
       </div>
-      <form
-        class="modal_add-comment"
-        [formGroup]="commentForm"
-        (ngSubmit)="onSubmitComment()"
-      >
-        <textarea
-          rows="4"
-          class="modal_add-comment_text"
-          formControlName="content"
-          placeholder="Add a comment"
-        ></textarea>
-        <button class="modal_add-comment_save-button">Save</button>
+      <form class="modal_add-comment" [formGroup]="commentForm">
+        <div class="textarea-container">
+          <textarea
+            #textArea
+            rows="4"
+            class="modal_add-comment_text textarea-container_text"
+            formControlName="content"
+            placeholder="Add a comment"
+          ></textarea>
+          <button (click)="clickEmojiPicker()">😁</button>
+        </div>
+
+        <app-emoji-picker
+          [(isVisible)]="isEmojiPickerVisible"
+          (emoji)="addEmojiToComment($event)"
+        ></app-emoji-picker>
+        <button
+          class="modal_add-comment_save-button"
+          (click)="onSubmitComment()"
+        >
+          Save
+        </button>
       </form>
       <div *ngFor="let comment of task.comments" class="modal_comment">
         <div>{{ comment.content }}</div>

@@ -1,0 +1,14 @@
+<div *ngIf="isVisible" class="emojipicker">
+  <emoji-mart
+    [isNative]="false"
+    set="google"
+    [darkMode]="true"
+    [isNative]="false"
+    [hideRecent]="false"
+    (emojiSelect)="handleClick($event); closePicker()"
+    title="Pick your emoji…"
+    emoji="point_up"
+  >
+  </emoji-mart>
+</div>
+<!-- <ngx-emoji emoji=":santa::skin-tone-3:" [size]="16"></ngx-emoji> -->
